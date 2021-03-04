@@ -3,8 +3,6 @@
 <h1> Create Node App 💛 </h1>
 
 Easy **one-line command** to create a Node app with all the **dependencies auto-installed**, and **built-in support (alpha release) for**:
-  - package managers (**pipenv, poetry, virtualenv**)
-  - web servers (**dev, gunicorn, uwsgi**)
   - connecting to different databases (**MySQL, PostgreSQL, SQLite3**)
   - data model creation
   - CRUD API creation (**REST, GraphQL**)
