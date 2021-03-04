@@ -44,7 +44,7 @@ http://127.0.0.1:8000/
 
 - Now that you've created your new app, **check out the `myapp.im` in your app directory** - using this you can: 
   - easily change your app settings such as Node server, package manager, API format, database etc.
-  - auto-generate code for data models, CRUD APIs etc using our simple config spec. 
+  - generate code for data models, CRUD APIs etc using our simple config spec. 
 
 - Continue reading to learn more, or check out www.imagine.ai.
 
