@@ -1,3 +1,5 @@
+[![CodeQL](https://github.com/imagineai/create-node-app/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/imagineai/create-node-app/actions/workflows/codeql-analysis.yml)
+
 # node-rest
 
 ## Launch App
