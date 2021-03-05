@@ -6,18 +6,6 @@ app:
     # choose one: [django, node]
     framework: node
 
-django:
-    # choose one: [pipenv, poetry, virtualenv]
-    package-manager: pipenv
-    # choose one: [gunicorn, uwsgi, dev]
-    server: dev
-
-    layout:
-        # choose one: [single-file, separate-files]
-        models: single-file
-        # name of the project settings directory:
-        project-dir: microservice
-
 api:
     # choose one: [rest, graphql]
     format: rest
