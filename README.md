@@ -2,7 +2,13 @@
 
 <h1> Create Node App 💛 </h1>
 
-Easy **one-line command** to create a Node app with all the **dependencies auto-installed**, and **built-in support (alpha release) for**:
+We're a Django project starter on steroids! 
+
+**One-line command** to create a Django app with all the **dependencies auto-installed**
+<br/>
+AND
+<br/>
+**Easy config (alpha release) to generate Django code for**:
   - connecting to different databases (**MySQL, PostgreSQL, SQLite3**)
   - data model creation
   - CRUD API creation (**REST, GraphQL**)
