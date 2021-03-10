@@ -2,13 +2,13 @@
 
 <h1> Create Node App 💛 </h1>
 
-We're a Django project starter on steroids! 
+>> We're a Django project starter on steroids! 
 
 **One-line command** to create a Django app with all the **dependencies auto-installed**
 <br/>
 AND
 <br/>
-**Easy config (alpha release) to generate Django code for**:
+**Easy config (alpha release) to generate Django code** for:
   - connecting to different databases (**MySQL, PostgreSQL, SQLite3**)
   - data model creation
   - CRUD API creation (**REST, GraphQL**)
@@ -19,7 +19,7 @@ AND
 
 <br/>
 
-<h2> Overview </h2>
+<h2> Quick start </h2>
 
 - **Run the following command** to create your new Node app:
 ```
