@@ -3,8 +3,8 @@
 <h1> Create Node App 💛 </h1>
 
 > We're a Node.js project starter on steroids! 
-
-**One-line command** to create a Node.js app with all the **dependencies auto-installed**
+<br/>
+**One-line command** to create a Node.js app with all the **dependencies auto-installed,**
 <br/>
 AND
 <br/>
