@@ -6,7 +6,7 @@
 
 <br/>
 
-**One-line command** to create a Node.js app with all the **dependencies auto-installed,**
+**One-line command** to create a Node.js app with all the **dependencies auto-installed**
 <br/>
 AND
 <br/>
