@@ -2,7 +2,7 @@
 
 <h1> Create Node App 💛 </h1>
 
->> We're a Django project starter on steroids! 
+> We're a Django project starter on steroids! 
 
 **One-line command** to create a Django app with all the **dependencies auto-installed**
 <br/>
