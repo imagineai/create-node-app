@@ -1,4 +1,6 @@
-[![CodeQL](https://github.com/imagineai/create-node-app/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/imagineai/create-node-app/actions/workflows/codeql-analysis.yml)
+[![CodeQL](https://github.com/imagineai/create-node-app/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/imagineai/create-node-app/actions/workflows/codeql-analysis.yml) 
+<a href="https://discord.gg/KNA5bf2kPs"><img src="https://img.shields.io/badge/chat-discord-brightgreen.svg?logo=discord&style=flat"></a>
+
 
 <h1> Create Node App 💛 </h1>
 
