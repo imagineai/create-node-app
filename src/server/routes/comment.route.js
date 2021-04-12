@@ -13,9 +13,12 @@ router.post('/', validate(commentValidation.create, options), CommentController.
 
 router.put('/:id', validate(commentValidation.update, options), CommentController.update);
 
-router.patch('/:id', validate(commentValidation.partialUpdate, options), CommentController.partialUpdate);
+router.patch(
+  '/:id',
+  validate(commentValidation.partialUpdate, options),
+  CommentController.partialUpdate
+);
 
 router.delete('/:id', validate(commentValidation.destroy, options), CommentController.destroy);
 
 export { router as commentRouter };
-

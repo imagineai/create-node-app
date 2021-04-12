@@ -3,7 +3,7 @@ import { Joi } from 'express-validation';
 const personValidation = {
   getAll: {
     query: Joi.object({
-      id: Joi.number(),
+      id: Joi.number().integer(),
       email: Joi.string().max(100),
       firstname: Joi.string().max(100),
       lastname: Joi.string().max(100),
@@ -12,7 +12,6 @@ const personValidation = {
   },
   create: {
     body: Joi.object({
-      id: Joi.number(),
       email: Joi.string().max(100),
       firstname: Joi.string().max(100),
       lastname: Joi.string().max(100),
@@ -21,7 +20,7 @@ const personValidation = {
   },
   update: {
     params: Joi.object({
-      id: Joi.number().required(),
+      id: Joi.number().integer().required(),
     }),
     body: Joi.object({
       email: Joi.string().max(100).required(),
@@ -32,7 +31,7 @@ const personValidation = {
   },
   partialUpdate: {
     params: Joi.object({
-      id: Joi.number().required(),
+      id: Joi.number().integer().required(),
     }),
     body: Joi.object({
       email: Joi.string().max(100),
@@ -43,10 +42,9 @@ const personValidation = {
   },
   destroy: {
     params: Joi.object({
-      id: Joi.number().required(),
+      id: Joi.number().integer().required(),
     }),
   },
 };
 
 export { personValidation };
-

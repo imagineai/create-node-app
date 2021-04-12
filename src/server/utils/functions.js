@@ -1,3 +1,8 @@
+import dayjs from 'dayjs';
+import utc from 'dayjs/plugin/utc';
+
+dayjs.extend(utc);
+
 const createErrorResponse = (statusCode, type, param, message) => ({
   status_code: statusCode,
   type,
@@ -9,8 +14,6 @@ const createSuccessResponse = (statusCode, data) => ({ status_code: statusCode, 
 
 const getRandomValueFromArray = (arr) => arr[Math.floor(Math.random() * arr.length)];
 
-export {
-  createErrorResponse,
-  createSuccessResponse,
-  getRandomValueFromArray,
-};
+const dateToUTC = (date) => dayjs.utc(date);
+
+export { createErrorResponse, createSuccessResponse, getRandomValueFromArray, dateToUTC };

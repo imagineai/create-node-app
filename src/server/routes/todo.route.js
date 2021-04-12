@@ -18,4 +18,3 @@ router.patch('/:id', validate(todoValidation.partialUpdate, options), TodoContro
 router.delete('/:id', validate(todoValidation.destroy, options), TodoController.destroy);
 
 export { router as todoRouter };
-

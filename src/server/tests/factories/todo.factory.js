@@ -6,8 +6,7 @@ const buildTodo = () => {
   const assigneeDict = buildPerson();
 
   return {
-    todo:
-    {
+    todo: {
       id: random.number(),
       title: random.word(255),
       description: random.word(1024),
@@ -20,11 +19,10 @@ const buildTodo = () => {
 };
 
 const createTodo = async (fakeDict) => {
-  const { todo, assigneeDict, } = fakeDict;
+  const { todo, assigneeDict } = fakeDict;
   await createPerson(assigneeDict);
-  
+
   await Todo.create(todo);
 };
 
 export { buildTodo, createTodo };
-

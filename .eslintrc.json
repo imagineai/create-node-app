@@ -4,8 +4,8 @@
     "es2021": true,
     "jest": true
   },
-  "plugins": ["security"],
-  "extends": ["airbnb-base", "plugin:security/recommended"],
+  "plugins": ["prettier"],
+  "extends": ["airbnb", "plugin:prettier/recommended"],
   "parserOptions": {
     "ecmaVersion": 12,
     "sourceType": "module"

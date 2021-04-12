@@ -30,7 +30,6 @@ app.use('/comment', commentRouter);
 
 app.use('/create_person', createPersonRouter);
 
-
 // Use custom response handler
 app.use(responseHandler);
 

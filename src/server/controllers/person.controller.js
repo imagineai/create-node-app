@@ -5,11 +5,8 @@ import { NotFound } from 'utils/errors/NotFound';
 class PersonController {
   static async create(req, res, next) {
     try {
-      const {
-        id, email, firstname, lastname, lastLogin
-      } = req.body;
-      const newPerson = await PersonService
-        .create(id, email, firstname, lastname, lastLogin);
+      const { email, firstname, lastname, lastLogin } = req.body;
+      const newPerson = await PersonService.create(email, firstname, lastname, lastLogin);
       res.locals.status = CREATED;
       res.locals.data = newPerson;
       return next();
@@ -17,13 +14,13 @@ class PersonController {
       return next(error);
     }
   }
-  
+
   static async get(req, res, next) {
     try {
       const { id } = req.params;
       const person = await PersonService.get(id);
       if (!person) {
-        throw new NotFound(`Person with primary key ${ id } not found`);
+        throw new NotFound(`Person with primary key ${id} not found`);
       }
       res.locals.data = person;
       return next();
@@ -31,7 +28,7 @@ class PersonController {
       return next(error);
     }
   }
-  
+
   static async getAll(req, res, next) {
     try {
       const filters = { ...req.query };
@@ -42,17 +39,15 @@ class PersonController {
       return next(error);
     }
   }
-  
+
   static async update(req, res, next) {
     try {
       const { id } = req.params;
-      const {
-        email,firstname,lastname,lastLogin,
-      } = req.body;
+      const { email, firstname, lastname, lastLogin } = req.body;
 
       const updatedPerson = await PersonService.update(id, email, firstname, lastname, lastLogin);
       if (!updatedPerson) {
-        throw new NotFound(`Person with primary key ${ id } not found`);
+        throw new NotFound(`Person with primary key ${id} not found`);
       }
 
       res.locals.data = updatedPerson;
@@ -65,13 +60,17 @@ class PersonController {
   static async partialUpdate(req, res, next) {
     try {
       const { id } = req.params;
-      const {
-        email,firstname,lastname,lastLogin,
-      } = req.body;
+      const { email, firstname, lastname, lastLogin } = req.body;
 
-      const updatedPerson = await PersonService.partialUpdate(id, email, firstname, lastname, lastLogin);
+      const updatedPerson = await PersonService.partialUpdate(
+        id,
+        email,
+        firstname,
+        lastname,
+        lastLogin
+      );
       if (!updatedPerson) {
-        throw new NotFound(`Person with primary key ${ id } not found`);
+        throw new NotFound(`Person with primary key ${id} not found`);
       }
 
       res.locals.data = updatedPerson;
@@ -80,13 +79,13 @@ class PersonController {
       return next(error);
     }
   }
-  
+
   static async destroy(req, res, next) {
     try {
       const { id } = req.params;
       const personDelete = await PersonService.destroy(id);
       if (!personDelete) {
-        throw new NotFound(`Person with primary key ${ id } not found`);
+        throw new NotFound(`Person with primary key ${id} not found`);
       }
       res.locals.data = personDelete;
       return next();
@@ -94,7 +93,6 @@ class PersonController {
       return next(error);
     }
   }
-};
+}
 
 export { PersonController };
-

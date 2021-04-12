@@ -5,15 +5,14 @@ import { NotFound } from 'utils/errors/NotFound';
 class TodoController {
   static async create(req, res, next) {
     try {
-      const {
-        id, title, description, dueDate, done, assignee
-      } = req.body;
-      const dbassignee = await PersonService.get(assignee);
-      if (!dbassignee) {
-        throw new NotFound(`Person ${ assignee } not found`);
+      const { title, description, dueDate, done, assignee } = req.body;
+      if (assignee !== null && typeof assignee !== 'undefined') {
+        const dbassignee = await PersonService.get(assignee);
+        if (!dbassignee) {
+          throw new NotFound(`Person ${assignee} not found`);
+        }
       }
-      const newTodo = await TodoService
-        .create(id, title, description, dueDate, done, assignee);
+      const newTodo = await TodoService.create(title, description, dueDate, done, assignee);
       res.locals.status = CREATED;
       res.locals.data = newTodo;
       return next();
@@ -21,13 +20,13 @@ class TodoController {
       return next(error);
     }
   }
-  
+
   static async get(req, res, next) {
     try {
       const { id } = req.params;
       const todo = await TodoService.get(id);
       if (!todo) {
-        throw new NotFound(`Todo with primary key ${ id } not found`);
+        throw new NotFound(`Todo with primary key ${id} not found`);
       }
       res.locals.data = todo;
       return next();
@@ -35,7 +34,7 @@ class TodoController {
       return next(error);
     }
   }
-  
+
   static async getAll(req, res, next) {
     try {
       const filters = { ...req.query };
@@ -46,20 +45,20 @@ class TodoController {
       return next(error);
     }
   }
-  
+
   static async update(req, res, next) {
     try {
       const { id } = req.params;
-      const {
-        title,description,dueDate,done,assignee,
-      } = req.body;
-      if (assignee && !await PersonService.get(assignee)) {
-        throw new NotFound(`Person ${ assignee } not found`)
+      const { title, description, dueDate, done, assignee } = req.body;
+      if (assignee !== null && typeof assignee !== 'undefined') {
+        if (!(await PersonService.get(assignee))) {
+          throw new NotFound(`Person ${assignee} not found`);
+        }
       }
 
       const updatedTodo = await TodoService.update(id, title, description, dueDate, done, assignee);
       if (!updatedTodo) {
-        throw new NotFound(`Todo with primary key ${ id } not found`);
+        throw new NotFound(`Todo with primary key ${id} not found`);
       }
 
       res.locals.data = updatedTodo;
@@ -72,16 +71,23 @@ class TodoController {
   static async partialUpdate(req, res, next) {
     try {
       const { id } = req.params;
-      const {
-        title,description,dueDate,done,assignee,
-      } = req.body;
-      if (assignee && !await PersonService.get(assignee)) {
-        throw new NotFound(`Person ${ assignee } not found`)
+      const { title, description, dueDate, done, assignee } = req.body;
+      if (assignee !== null && typeof assignee !== 'undefined') {
+        if (!(await PersonService.get(assignee))) {
+          throw new NotFound(`Person ${assignee} not found`);
+        }
       }
 
-      const updatedTodo = await TodoService.partialUpdate(id, title, description, dueDate, done, assignee);
+      const updatedTodo = await TodoService.partialUpdate(
+        id,
+        title,
+        description,
+        dueDate,
+        done,
+        assignee
+      );
       if (!updatedTodo) {
-        throw new NotFound(`Todo with primary key ${ id } not found`);
+        throw new NotFound(`Todo with primary key ${id} not found`);
       }
 
       res.locals.data = updatedTodo;
@@ -90,13 +96,13 @@ class TodoController {
       return next(error);
     }
   }
-  
+
   static async destroy(req, res, next) {
     try {
       const { id } = req.params;
       const todoDelete = await TodoService.destroy(id);
       if (!todoDelete) {
-        throw new NotFound(`Todo with primary key ${ id } not found`);
+        throw new NotFound(`Todo with primary key ${id} not found`);
       }
       res.locals.data = todoDelete;
       return next();
@@ -104,7 +110,6 @@ class TodoController {
       return next(error);
     }
   }
-};
+}
 
 export { TodoController };
-

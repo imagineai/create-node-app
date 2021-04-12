@@ -1,5 +1,3 @@
 const commentStatusChoices = ['read', 'unread'];
 
-export {
-  commentStatusChoices,
-};
+export { commentStatusChoices };

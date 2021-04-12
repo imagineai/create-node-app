@@ -109,3 +109,6 @@ dist
 # Ignore editor folder
 .vscode
 .idea
+
+# Imagine Stuff
+.imagine

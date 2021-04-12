@@ -4,7 +4,7 @@ import { commentStatusChoices } from 'server/utils/constants/fieldChoices';
 const commentValidation = {
   getAll: {
     query: Joi.object({
-      id: Joi.number(),
+      id: Joi.number().integer(),
       message: Joi.string().max(512),
       submitted: Joi.date(),
       status: Joi.string().valid(...commentStatusChoices),
@@ -12,8 +12,7 @@ const commentValidation = {
   },
   create: {
     body: Joi.object({
-      id: Joi.number(),
-      todo: Joi.number().required(),
+      todo: Joi.number().integer().required(),
       message: Joi.string().max(512),
       submitted: Joi.date(),
       status: Joi.string().valid(...commentStatusChoices),
@@ -21,32 +20,33 @@ const commentValidation = {
   },
   update: {
     params: Joi.object({
-      id: Joi.number().required(),
+      id: Joi.number().integer().required(),
     }),
     body: Joi.object({
       message: Joi.string().max(512).required(),
       submitted: Joi.date().required(),
-      status: Joi.string().valid(...commentStatusChoices).required(),
-      todo: Joi.number().required(),
+      status: Joi.string()
+        .valid(...commentStatusChoices)
+        .required(),
+      todo: Joi.number().integer().required(),
     }),
   },
   partialUpdate: {
     params: Joi.object({
-      id: Joi.number().required(),
+      id: Joi.number().integer().required(),
     }),
     body: Joi.object({
       message: Joi.string().max(512),
       submitted: Joi.date(),
       status: Joi.string().valid(...commentStatusChoices),
-      todo: Joi.number(),
+      todo: Joi.number().integer(),
     }),
   },
   destroy: {
     params: Joi.object({
-      id: Joi.number().required(),
+      id: Joi.number().integer().required(),
     }),
   },
 };
 
 export { commentValidation };
-

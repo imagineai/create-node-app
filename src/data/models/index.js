@@ -1,5 +1,5 @@
 import Sequelize from 'sequelize';
-import { config } from 'config';
+import config from 'config';
 
 import { commentModel } from './comment.model';
 import { personModel } from './person.model';
@@ -15,18 +15,16 @@ if (env === 'test') {
   database = test;
 } else database = development;
 
-const sequelize = new Sequelize(
-  database.database,
-  database.username,
-  database.password,
-  database.params
-);
+const sequelize = new Sequelize(database.database, database.username, database.password, {
+  dialect: database.dialect,
+  ...database.params,
+});
 
 todoModel(sequelize);
 commentModel(sequelize);
 personModel(sequelize);
 
-const { Todo,Comment,Person, } = sequelize.models;
+const { Todo, Comment, Person } = sequelize.models;
 
 Todo.associate(sequelize.models);
 Comment.associate(sequelize.models);
@@ -34,9 +32,4 @@ Person.associate(sequelize.models);
 
 sequelize.sync();
 
-export { 
-  sequelize,
-  Todo,
-  Comment,
-  Person,
-};
+export { sequelize, Todo, Comment, Person };

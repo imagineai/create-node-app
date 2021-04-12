@@ -8,8 +8,7 @@ const buildComment = () => {
   const todoDict = buildTodo();
 
   return {
-    comment:
-    {
+    comment: {
       id: random.number(),
       message: random.word(512),
       submitted: date.past(),
@@ -21,11 +20,10 @@ const buildComment = () => {
 };
 
 const createComment = async (fakeDict) => {
-  const { comment, todoDict, } = fakeDict;
+  const { comment, todoDict } = fakeDict;
   await createTodo(todoDict);
-  
+
   await Comment.create(comment);
 };
 
 export { buildComment, createComment };
-

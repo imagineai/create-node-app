@@ -16,19 +16,20 @@ describe('CreatePerson tests', () => {
   });
 
   test('/POST - Response with a new created person', async () => {
-    const { person: fakePerson } = buildPerson();
+    const fakePerson = await buildPerson({});
 
     const response = await request(app).post(ENDPOINT).send(fakePerson);
 
     expect(response.status).toBe(201);
     expect(response.statusCode).toBe(201);
 
-    const person = await Person.findByPk(fakePerson.id);
+    const responsePerson = response.body.data;
 
-    expect(person.id).toBe(fakePerson.id);
+    const person = await Person.findByPk(responsePerson.id);
+
     expect(person.email).toBe(fakePerson.email);
     expect(person.firstname).toBe(fakePerson.firstname);
     expect(person.lastname).toBe(fakePerson.lastname);
-    expect(new Date(person.lastLogin).toUTCString()).toEqual(fakePerson.lastLogin.toUTCString());
+    expect(person.lastLogin.toISOString()).toEqual(fakePerson.lastLogin);
   });
 });
